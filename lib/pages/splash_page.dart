@@ -1,3 +1,4 @@
+import 'package:cozy/pages/home_page.dart';
 import 'package:cozy/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +9,7 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
+        bottom: false,
           child: Stack(
         children: [
           Align(
@@ -44,7 +46,10 @@ class SplashPage extends StatelessWidget {
                   width: 210,
                   height: 50,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: 
+                        (context) => const HomePage()));
+                      },
                       style: ButtonStyle(
                           backgroundColor:
                               MaterialStateProperty.all(purpleColor),
