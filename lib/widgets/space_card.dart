@@ -1,13 +1,15 @@
+import 'package:cozy/models/space.dart';
 import 'package:cozy/theme.dart';
 import 'package:flutter/material.dart';
 
 class SpaceCard extends StatelessWidget {
-  const SpaceCard({super.key});
+  final Space space;
+  SpaceCard(this.space);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(left: 24, bottom: 30),
+    return Padding(
+      padding: const EdgeInsets.only(left: 24, right: 24, bottom: 30),
         child: Row(
       children: [
         ClipRRect(
@@ -18,7 +20,7 @@ class SpaceCard extends StatelessWidget {
             child: Stack(
               children: [
                 Image.asset(
-                  'assets/space1.png',
+                  space.imageUrl,
                 ),
                 Align(
                   alignment: Alignment.topRight,
@@ -28,7 +30,7 @@ class SpaceCard extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: purpleColor,
                         borderRadius:
-                            BorderRadius.only(bottomLeft: Radius.circular(36))),
+                            const BorderRadius.only(bottomLeft: Radius.circular(36))),
                     child: Center(
                         child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -38,9 +40,9 @@ class SpaceCard extends StatelessWidget {
                           width: 18,
                           height: 18,
                         ),
-                        SizedBox(width: 2),
+                        const SizedBox(width: 2),
                         Text(
-                          '4/5',
+                          '${space.rate}/5',
                           style: whiteTextStyle.copyWith(fontSize: 13),
                         )
                       ],
@@ -51,22 +53,22 @@ class SpaceCard extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 20,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Kuretakeso Hott',
+              space.name,
               style: blackTextStyle.copyWith(fontSize: 18),
             ),
-            SizedBox(
+            const SizedBox(
               height: 2,
             ),
             Text.rich(
               TextSpan(
-                  text: '\$52',
+                  text: '\$${space.price}',
                   style: purpleTextStyle.copyWith(fontSize: 16),
                   children: [
                     TextSpan(
@@ -74,11 +76,11 @@ class SpaceCard extends StatelessWidget {
                         style: greyTextStyle.copyWith(fontSize: 16)),
                   ]),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Text(
-              'Bandung, Germany',
+              space.location,
               style: greyTextStyle.copyWith(fontSize: 14),
             )
           ],
